@@ -30,12 +30,12 @@ const tick = () =>
   console.clear();
   fsm.状態群.log();
   fsm.文脈.log();
-  const current = fsm.文脈.今の状態;
-  const actionName = fsm.状態群[current].Act;
-  const actionFunc = actionMap.get(actionName);
-  const message = actionFunc();
+  const current    = fsm.文脈.今の状態;
+  const state      = fsm.状態群[current];
+  const actionName = state.Act;
+  const action     = actionMap.get(actionName);
 
-  
+  action(fsm.文脈, state);
 }
 
 tick();
