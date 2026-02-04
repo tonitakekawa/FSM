@@ -26,16 +26,16 @@ fsm.状態群.log = () => console.log(fsmToString(fsm));
 fsm.文脈.log = () => console.log(contextToString(fsm));
 
 const tick = () =>
-{  
+{
+  console.clear();
   fsm.状態群.log();
   fsm.文脈.log();
   const current = fsm.文脈.今の状態;
   const actionName = fsm.状態群[current].Act;
   const actionFunc = actionMap.get(actionName);
-  if (typeof actionFunc !== "function") {
-    throw new Error(`未知のAct: ${actionName}`);
-  }
   const message = actionFunc();
+
+  
 }
 
 tick();
