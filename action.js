@@ -3,8 +3,8 @@ const 待機ミリ秒 = (文脈, 状態) =>
 {
   return new Promise((resolve) => {
       setTimeout(() => {
-          resolve();
           文脈.メッセージキュー.push(状態.完了時);
+          resolve();
       }, 状態.待機時間);
   });
 }

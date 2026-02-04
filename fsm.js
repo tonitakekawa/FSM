@@ -27,6 +27,9 @@ fsm.文脈.log = () => console.log(contextToString(fsm));
 
 const tick = () =>
 {
+  const message = fsm.文脈.メッセージキュー.shift();
+  if (!message) return;
+
   console.clear();
   fsm.状態群.log();
   fsm.文脈.log();
@@ -38,4 +41,5 @@ const tick = () =>
   action(fsm.文脈, state);
 }
 
-tick();
+fsm.文脈.メッセージキュー.push(fsm.初期状態);
+setInterval(tick, 16);
